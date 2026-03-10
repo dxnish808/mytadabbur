@@ -3,7 +3,11 @@
     "allow": [
       "Bash(ls -la /d/projects/puasa/mytadabbur/.env*)",
       "Bash(find d:projectspuasamytadabbursrc -name *.ts -o -name *.tsx)",
-      "Bash(node -e \"console.log\\(Object.keys\\(require\\(''/d/projects/puasa/mytadabbur/package.json''\\).dependencies\\).join\\(''\\\\n''\\)\\)\")"
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\(''/d/projects/puasa/mytadabbur/package.json''\\).dependencies\\).join\\(''\\\\n''\\)\\)\")",
+      "Bash(npm install:*)",
+      "Bash(npm ls:*)",
+      "Bash(npx shadcn@latest init --help)",
+      "Bash(npx shadcn@latest help init)"
     ]
   }
 }

@@ -1,12 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", "Traditional Arabic", serif;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
 }
 
 :root {
+  /* Existing theme tokens */
   --sea-ink: #173a40;
   --sea-ink-soft: #416166;
   --lagoon: #4fb8b2;
@@ -26,6 +32,35 @@
   --link-bg-hover: rgba(255, 255, 255, 0.9);
   --hero-a: rgba(79, 184, 178, 0.36);
   --hero-b: rgba(47, 106, 74, 0.2);
+
+  /* shadcn/ui variables — mapped to existing theme */
+  --background: #e7f3ec;
+  --foreground: #173a40;
+  --card: #ffffff;
+  --card-foreground: #173a40;
+  --popover: #ffffff;
+  --popover-foreground: #173a40;
+  --primary: #328f97;
+  --primary-foreground: #ffffff;
+  --secondary: #e7f0e8;
+  --secondary-foreground: #173a40;
+  --muted: #e7f0e8;
+  --muted-foreground: #416166;
+  --accent: #e7f0e8;
+  --accent-foreground: #173a40;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(23, 58, 64, 0.14);
+  --input: rgba(23, 58, 64, 0.14);
+  --ring: #4fb8b2;
+  --sidebar-background: #f3faf5;
+  --sidebar-foreground: #173a40;
+  --sidebar-primary: #328f97;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e7f0e8;
+  --sidebar-accent-foreground: #173a40;
+  --sidebar-border: rgba(23, 58, 64, 0.14);
+  --sidebar-ring: #4fb8b2;
 }
 
 :root[data-theme="dark"] {
@@ -48,6 +83,35 @@
   --link-bg-hover: rgba(24, 44, 49, 0.8);
   --hero-a: rgba(96, 215, 207, 0.18);
   --hero-b: rgba(110, 200, 154, 0.12);
+
+  /* shadcn/ui dark */
+  --background: #0a1418;
+  --foreground: #d7ece8;
+  --card: #0f1a1e;
+  --card-foreground: #d7ece8;
+  --popover: #0f1a1e;
+  --popover-foreground: #d7ece8;
+  --primary: #8de5db;
+  --primary-foreground: #0a1418;
+  --secondary: #162226;
+  --secondary-foreground: #d7ece8;
+  --muted: #162226;
+  --muted-foreground: #afcdc8;
+  --accent: #162226;
+  --accent-foreground: #d7ece8;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(141, 229, 219, 0.18);
+  --input: rgba(141, 229, 219, 0.18);
+  --ring: #60d7cf;
+  --sidebar-background: #0f1a1e;
+  --sidebar-foreground: #d7ece8;
+  --sidebar-primary: #8de5db;
+  --sidebar-primary-foreground: #0a1418;
+  --sidebar-accent: #162226;
+  --sidebar-accent-foreground: #d7ece8;
+  --sidebar-border: rgba(141, 229, 219, 0.18);
+  --sidebar-ring: #60d7cf;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,11 +135,41 @@
     --link-bg-hover: rgba(24, 44, 49, 0.8);
     --hero-a: rgba(96, 215, 207, 0.18);
     --hero-b: rgba(110, 200, 154, 0.12);
+
+    /* shadcn/ui dark */
+    --background: #0a1418;
+    --foreground: #d7ece8;
+    --card: #0f1a1e;
+    --card-foreground: #d7ece8;
+    --popover: #0f1a1e;
+    --popover-foreground: #d7ece8;
+    --primary: #8de5db;
+    --primary-foreground: #0a1418;
+    --secondary: #162226;
+    --secondary-foreground: #d7ece8;
+    --muted: #162226;
+    --muted-foreground: #afcdc8;
+    --accent: #162226;
+    --accent-foreground: #d7ece8;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: rgba(141, 229, 219, 0.18);
+    --input: rgba(141, 229, 219, 0.18);
+    --ring: #60d7cf;
+    --sidebar-background: #0f1a1e;
+    --sidebar-foreground: #d7ece8;
+    --sidebar-primary: #8de5db;
+    --sidebar-primary-foreground: #0a1418;
+    --sidebar-accent: #162226;
+    --sidebar-accent-foreground: #d7ece8;
+    --sidebar-border: rgba(141, 229, 219, 0.18);
+    --sidebar-ring: #60d7cf;
   }
 }
 
 * {
   box-sizing: border-box;
+  border-color: var(--border);
 }
 
 html,
@@ -86,9 +180,9 @@ body,
 
 body {
   margin: 0;
-  color: var(--sea-ink);
+  color: var(--foreground);
   font-family: var(--font-sans);
-  background-color: var(--bg-base);
+  background-color: var(--background);
   background:
     radial-gradient(1100px 620px at -8% -10%, var(--hero-a), transparent 58%),
     radial-gradient(1050px 620px at 112% -12%, var(--hero-b), transparent 62%),
@@ -139,7 +233,7 @@ a:hover {
 
 code {
   font-size: 0.9em;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   background: color-mix(in oklab, var(--surface-strong) 82%, white 18%);
   border-radius: 7px;
   padding: 2px 7px;
@@ -159,12 +253,8 @@ pre code {
   margin-inline: auto;
 }
 
-.display-title {
-  font-family: "Fraunces", Georgia, serif;
-}
-
 .island-shell {
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   background: linear-gradient(165deg, var(--surface-strong), var(--surface));
   box-shadow:
     0 1px 0 var(--inset-glint) inset,
@@ -206,7 +296,7 @@ a {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: var(--sea-ink-soft);
+  color: var(--muted-foreground);
 }
 
 .nav-link::after {
@@ -224,7 +314,7 @@ a {
 
 .nav-link:hover,
 .nav-link.is-active {
-  color: var(--sea-ink);
+  color: var(--foreground);
 }
 
 .nav-link:hover::after,
@@ -239,7 +329,7 @@ a {
 }
 
 .site-footer {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
   background: color-mix(in oklab, var(--header-bg) 84%, transparent 16%);
 }
 
