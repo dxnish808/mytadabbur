@@ -9,7 +9,6 @@ import {
   BarChart3,
   Flame,
   Layers,
-  BookOpen,
   Trophy,
 } from 'lucide-react'
 import { Bismillah } from '#/components/shared/Bismillah'

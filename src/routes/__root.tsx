@@ -44,11 +44,23 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content:
           'Aplikasi jurnal tadabbur Al-Quran untuk refleksi harian. Tulis catatan, jejak bacaan, dan khatam Al-Quran.',
       },
+      {
+        name: 'theme-color',
+        content: '#328f97',
+      },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
+      },
+      {
+        rel: 'manifest',
+        href: '/manifest.webmanifest',
+      },
+      {
+        rel: 'apple-touch-icon',
+        href: '/logo192.png',
       },
     ],
   }),

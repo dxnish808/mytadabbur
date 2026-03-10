@@ -10,7 +10,7 @@ const cards = [
   { key: 'surahCompleted', label: 'Surah Selesai', icon: BookOpen, suffix: '/ 114', color: 'text-purple-600 bg-purple-100 dark:text-purple-400 dark:bg-purple-950' },
   { key: 'khatamCompleted', label: 'Khatam', icon: Trophy, color: 'text-amber-600 bg-amber-100 dark:text-amber-400 dark:bg-amber-950' },
   { key: 'totalPagesRead', label: 'Halaman Dibaca', icon: FileText, color: 'text-rose-600 bg-rose-100 dark:text-rose-400 dark:bg-rose-950' },
-] as const
+] as const satisfies readonly { key: string; label: string; icon: any; suffix?: string; color: string }[]
 
 export function StatsOverview() {
   const { getToken } = useAuth()

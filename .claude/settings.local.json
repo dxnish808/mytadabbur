@@ -14,7 +14,9 @@
       "Bash(npx vite:*)",
       "Bash(npm run:*)",
       "Bash(grep -r export.*createServerFn node_modules/@tanstack/react-start/dist/esm/)",
-      "Bash(xargs grep:*)"
+      "Bash(xargs grep:*)",
+      "Bash(ls d:/projects/puasa/mytadabbur/dist/client/assets/workbox* d:/projects/puasa/mytadabbur/dist/client/sw.js)",
+      "Bash(npx drizzle-kit:*)"
     ]
   }
 }

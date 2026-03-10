@@ -1,6 +1,6 @@
 import { createServerFn } from '@tanstack/react-start'
 import { z } from 'zod'
-import { eq, and, gte, lte, count, sql, desc } from 'drizzle-orm'
+import { eq, and, gte, count, sql, desc } from 'drizzle-orm'
 import { db } from '#/db/index'
 import {
   journalEntries,
