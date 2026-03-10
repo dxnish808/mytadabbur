@@ -3,6 +3,9 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { BookOpen, Layers } from 'lucide-react'
 import { JuzGrid } from '#/components/tracker/JuzGrid'
 import { SurahGrid } from '#/components/tracker/SurahGrid'
+import { DailyStreakForm } from '#/components/tracker/DailyStreakForm'
+import { StreakSummary } from '#/components/tracker/StreakSummary'
+import { StreakCalendar } from '#/components/tracker/StreakCalendar'
 
 export const Route = createFileRoute('/tracker/')({
   component: TrackerPage,
@@ -58,6 +61,21 @@ function TrackerPage() {
 
       {/* Content */}
       {tab === 'juz' ? <JuzGrid /> : <SurahGrid />}
+
+      {/* Streak section */}
+      <div className="mt-8 space-y-4">
+        <h2 className="text-lg font-semibold text-[var(--foreground)]">
+          Rekod Harian
+        </h2>
+        <DailyStreakForm />
+        <StreakSummary />
+        <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-4">
+          <h3 className="mb-3 text-sm font-medium text-[var(--foreground)]">
+            Aktiviti 6 bulan lepas
+          </h3>
+          <StreakCalendar />
+        </div>
+      </div>
     </div>
   )
 }
