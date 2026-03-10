@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /d/projects/puasa/mytadabbur/.env*)",
+      "Bash(find d:projectspuasamytadabbursrc -name *.ts -o -name *.tsx)",
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\(''/d/projects/puasa/mytadabbur/package.json''\\).dependencies\\).join\\(''\\\\n''\\)\\)\")"
+    ]
+  }
+}
