@@ -13,7 +13,7 @@ const tokenSchema = z.object({ clerkToken: z.string() })
 
 // ─── List entries (with optional filters) ────────────────
 export const listJournalEntries = createServerFn({ method: 'GET' })
-  .validator(
+  .inputValidator(
     tokenSchema.extend({
       surahNumber: z.number().optional(),
       mood: z.string().optional(),
@@ -61,7 +61,7 @@ export const listJournalEntries = createServerFn({ method: 'GET' })
 
 // ─── Get single entry ────────────────────────────────────
 export const getJournalEntry = createServerFn({ method: 'GET' })
-  .validator(tokenSchema.extend({ id: z.string().uuid() }))
+  .inputValidator(tokenSchema.extend({ id: z.string().uuid() }))
   .handler(async ({ data }) => {
     const userId = await requireAuth(data.clerkToken)
 
@@ -84,7 +84,7 @@ export const getJournalEntry = createServerFn({ method: 'GET' })
 
 // ─── Create entry ────────────────────────────────────────
 export const createJournalEntry = createServerFn({ method: 'POST' })
-  .validator(tokenSchema.extend(createJournalEntrySchema.shape))
+  .inputValidator(tokenSchema.extend(createJournalEntrySchema.shape))
   .handler(async ({ data }) => {
     const userId = await requireAuth(data.clerkToken)
 
@@ -108,7 +108,7 @@ export const createJournalEntry = createServerFn({ method: 'POST' })
 
 // ─── Update entry ────────────────────────────────────────
 export const updateJournalEntry = createServerFn({ method: 'POST' })
-  .validator(
+  .inputValidator(
     tokenSchema.extend({
       id: z.string().uuid(),
       data: updateJournalEntrySchema,
@@ -137,7 +137,7 @@ export const updateJournalEntry = createServerFn({ method: 'POST' })
 
 // ─── Delete entry ────────────────────────────────────────
 export const deleteJournalEntry = createServerFn({ method: 'POST' })
-  .validator(tokenSchema.extend({ id: z.string().uuid() }))
+  .inputValidator(tokenSchema.extend({ id: z.string().uuid() }))
   .handler(async ({ data }) => {
     const userId = await requireAuth(data.clerkToken)
 

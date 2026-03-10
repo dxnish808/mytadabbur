@@ -1,4 +1,4 @@
-import { createClerkClient } from '@clerk/backend'
+import { createClerkClient, verifyToken } from '@clerk/backend'
 import { db } from '#/db/index'
 import { users } from '#/db/schema'
 
@@ -27,7 +27,7 @@ export async function requireAuth(token: string): Promise<string> {
   }
 
   try {
-    const session = await clerk.verifyToken(token)
+    const session = await verifyToken(token, { secretKey: process.env.CLERK_SECRET_KEY! })
     clerkUser = await clerk.users.getUser(session.sub)
   } catch {
     throw new Error('Sesi tidak sah — sila log masuk semula')

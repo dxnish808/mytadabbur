@@ -6,7 +6,6 @@ import { getSurahByNumber } from '#/lib/quran/surahs'
 import { Bismillah } from '#/components/shared/Bismillah'
 import { ArabicText } from '#/components/shared/ArabicText'
 import { LoadingSpinner } from '#/components/shared/LoadingSpinner'
-import { Button } from '#/components/ui/button'
 
 export const Route = createFileRoute('/quran/$surahNumber')({
   component: SurahDetailPage,

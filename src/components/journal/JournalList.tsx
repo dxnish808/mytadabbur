@@ -122,7 +122,7 @@ export function JournalList({
         />
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
-          {entries.map((entry) => (
+          {entries.map((entry: (typeof entries)[number]) => (
             <JournalCard key={entry.id} entry={entry} />
           ))}
         </div>

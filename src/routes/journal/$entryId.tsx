@@ -8,7 +8,6 @@ import {
   deleteJournalEntry,
 } from '#/server/functions/journal'
 import { moodLabels } from '#/lib/validators/journal'
-import { ArabicText } from '#/components/shared/ArabicText'
 import { LoadingSpinner } from '#/components/shared/LoadingSpinner'
 import { Button } from '#/components/ui/button'
 
@@ -148,7 +147,7 @@ function JournalEntryPage() {
       {/* Tags */}
       {tags.length > 0 && (
         <div className="mb-4 flex flex-wrap gap-1.5">
-          {tags.map((tag) => (
+          {tags.map((tag: string) => (
             <span
               key={tag}
               className="rounded-md bg-[var(--muted)] px-2 py-0.5 text-xs font-medium text-[var(--muted-foreground)]"
