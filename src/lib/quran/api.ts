@@ -51,12 +51,23 @@ export async function fetchSurahDetail(
     ),
   ])
 
-  const ayahs: Ayah[] = arabic.data.ayahs.map((a, i) => ({
-    number: a.number,
-    numberInSurah: a.numberInSurah,
-    text: a.text,
-    translation: malay.data.ayahs[i]?.text ?? '',
-  }))
+  // Bismillah regex — the API prepends it to ayah 1 of most surahs.
+  // We strip it since we display Bismillah separately above the ayahs.
+  const bismillahRe = /^بِسۡمِ ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ\s*/
+
+  const ayahs: Ayah[] = arabic.data.ayahs.map((a, i) => {
+    let text = a.text.trim()
+    // Strip Bismillah from first ayah (except Al-Fatihah where it IS the first ayah)
+    if (a.numberInSurah === 1 && surahNumber !== 1 && surahNumber !== 9) {
+      text = text.replace(bismillahRe, '').trim()
+    }
+    return {
+      number: a.number,
+      numberInSurah: a.numberInSurah,
+      text,
+      translation: malay.data.ayahs[i]?.text ?? '',
+    }
+  })
 
   return {
     ...meta,
@@ -75,7 +86,7 @@ const ONE_WEEK = ONE_DAY * 7
  */
 export const surahDetailQuery = (surahNumber: number) =>
   queryOptions({
-    queryKey: ['surah', surahNumber],
+    queryKey: ['surah', surahNumber, 'v2'],
     queryFn: () => fetchSurahDetail(surahNumber),
     staleTime: ONE_DAY,
     gcTime: ONE_WEEK,

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
+import { useAuth } from '@clerk/clerk-react'
 import {
   BookOpen,
   PenLine,
@@ -22,7 +23,10 @@ const navItems = [
 ] as const
 
 export function MobileNav() {
+  const { isSignedIn } = useAuth()
   const [open, setOpen] = useState(false)
+
+  if (!isSignedIn) return null
 
   return (
     <>

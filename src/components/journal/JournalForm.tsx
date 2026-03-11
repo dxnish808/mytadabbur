@@ -46,7 +46,12 @@ export function JournalForm({ defaultValues }: JournalFormProps) {
     resolver: zodResolver(createJournalEntrySchema),
     defaultValues: {
       surahNumber: defaultValues?.surahNumber ?? undefined,
-      surahName: defaultValues?.surahName ?? '',
+      surahName:
+        defaultValues?.surahName ||
+        (defaultValues?.surahNumber
+          ? (getSurahByNumber(defaultValues.surahNumber)
+              ?.nameTransliteration ?? '')
+          : ''),
       ayahStart: defaultValues?.ayahStart ?? null,
       ayahEnd: defaultValues?.ayahEnd ?? null,
       reflection: defaultValues?.reflection ?? '',

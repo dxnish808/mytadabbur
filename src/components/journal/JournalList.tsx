@@ -58,7 +58,7 @@ export function JournalList({
         </div>
 
         <select
-          className="h-9 rounded-md border border-[var(--input)] bg-transparent px-3 text-sm text-[var(--foreground)]"
+          className="h-9 rounded-md border border-[var(--input)] bg-[var(--card)] px-3 text-sm text-[var(--foreground)]"
           value={mood ?? ''}
           onChange={(e) =>
             navigate({
@@ -80,7 +80,7 @@ export function JournalList({
         </select>
 
         <select
-          className="h-9 rounded-md border border-[var(--input)] bg-transparent px-3 text-sm text-[var(--foreground)]"
+          className="h-9 rounded-md border border-[var(--input)] bg-[var(--card)] px-3 text-sm text-[var(--foreground)]"
           value={sort ?? 'newest'}
           onChange={(e) =>
             navigate({

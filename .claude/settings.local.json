@@ -16,7 +16,11 @@
       "Bash(grep -r export.*createServerFn node_modules/@tanstack/react-start/dist/esm/)",
       "Bash(xargs grep:*)",
       "Bash(ls d:/projects/puasa/mytadabbur/dist/client/assets/workbox* d:/projects/puasa/mytadabbur/dist/client/sw.js)",
-      "Bash(npx drizzle-kit:*)"
+      "Bash(npx drizzle-kit:*)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(curl -s \"https://api.alquran.cloud/v1/surah/2\")",
+      "Bash(node -e \"const d=[];process.stdin.on\\(''''data'''',c=>d.push\\(c\\)\\);process.stdin.on\\(''''end'''',\\(\\)=>{const j=JSON.parse\\(d.join\\(''''''''\\)\\);console.log\\(''''Ayah 1 text:''''\\);console.log\\(JSON.stringify\\(j.data.ayahs[0].text\\)\\)}\\)\")",
+      "Bash(curl -s \"https://api.alquran.cloud/v1/surah/3\")"
     ]
   }
 }

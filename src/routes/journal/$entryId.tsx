@@ -120,8 +120,7 @@ function JournalEntryPage() {
               navigate({
                 to: '/journal/new',
                 search: {
-                  surah: entry.surahNumber,
-                  ayah: entry.ayahStart ?? undefined,
+                  entryId: entry.id,
                 },
               })
             }

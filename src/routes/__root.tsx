@@ -1,5 +1,6 @@
 import {
   HeadContent,
+  Link,
   Outlet,
   Scripts,
   createRootRouteWithContext,
@@ -8,7 +9,6 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { Sidebar } from '../components/layout/Sidebar'
 
 import ClerkProvider from '../integrations/clerk/provider'
 
@@ -56,7 +56,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
       {
         rel: 'manifest',
-        href: '/manifest.webmanifest',
+        href: '/manifest.json',
       },
       {
         rel: 'apple-touch-icon',
@@ -66,20 +66,38 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   }),
   component: RootLayout,
   shellComponent: RootDocument,
+  notFoundComponent: NotFoundPage,
 })
+
+function NotFoundPage() {
+  return (
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <p className="text-6xl font-bold text-[var(--muted-foreground)]">404</p>
+      <h1 className="mt-4 text-xl font-semibold text-[var(--foreground)]">
+        Halaman tidak dijumpai
+      </h1>
+      <p className="mt-2 text-sm text-[var(--muted-foreground)]">
+        Maaf, halaman yang anda cari tidak wujud.
+      </p>
+      <Link
+        to="/"
+        className="mt-6 inline-flex h-10 items-center rounded-lg bg-[var(--primary)] px-5 text-sm font-medium text-white no-underline transition hover:opacity-90"
+      >
+        Kembali ke Utama
+      </Link>
+    </div>
+  )
+}
 
 function RootLayout() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <div className="flex flex-1">
-        <Sidebar className="hidden md:flex" />
-        <main className="flex-1 overflow-y-auto">
-          <div className="mx-auto w-full max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
-            <Outlet />
-          </div>
-        </main>
-      </div>
+      <main className="flex-1 overflow-y-auto">
+        <div className="mx-auto w-full max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
+          <Outlet />
+        </div>
+      </main>
       <Footer />
     </div>
   )
